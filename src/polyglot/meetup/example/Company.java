@@ -14,10 +14,7 @@ public class Company {
 	/* Employee-bonus map*/
 	public HashMap<Employee,Double> getEmployeeBonuses() {
 		HashMap<Employee,Double> bonuses = new HashMap<>();
-		for (Employee e :  employees ) {
-			double bonus = e.getBonus((salary, rating) ->salary * 0.2 * rating );
-			bonuses.put(e, bonus);
-		}
+		employees.forEach( e -> bonuses.put(e, e.getBonus((salary, rating) ->salary * 0.2 * rating )));
 		return bonuses;
 	}
 	
