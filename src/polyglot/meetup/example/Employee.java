@@ -25,13 +25,10 @@ public class Employee {
 	public double getBonus(BonusCalculator calculator) {
 		try {
 			return calculator.calculate(monthlySalary, performanceRating);
-		} catch (LowRatingException ire) {
-			System.err.println("Rating very low");
+		} catch (LowRatingException | HighSalaryException ise) {
+			System.err.println("Bonus not applicable");
 			return 0;
-		}  catch(HighSalaryException ise) {
-			System.err.println("Salary very high");
-			return 0;
-		}
+		}  
 	}
 	
 	public Sex sex() {
