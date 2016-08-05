@@ -1,10 +1,11 @@
 package polyglot.meetup.example;
 
-import java.util.ArrayList;
+import polyglot.meetup.example.Employee.Sex;
 
 public class Test {
 
 	Company c;
+	
 	public Test() {
 		c = new Company();
 		c.addEmployee(new Employee("Kevin", "Nick", 34, Employee.Sex.MALE, 10000,4));
@@ -21,11 +22,11 @@ public class Test {
 	
 	
 	public double averageBonus() {
-		double sum = 0;
-		for(Double d :  c.getEmployeeBonuses().values()) {
-			sum += d;
-		}
-		return sum/c.getEmployees().size();
+		return c.getEmployeeBonuses().values()
+				.stream()
+				.mapToDouble(Double::doubleValue)
+				.average()
+				.getAsDouble();
 	}
 	
 	private boolean isManagerNameFamous(String name) {
@@ -40,21 +41,18 @@ public class Test {
 	}
 	/* Find the maximum salary of a female employee who is in her 40s and reports to Larry, Satya or Steve */
 	public double runQuery() {
-		ArrayList<Employee> employees = c.getEmployees();
-		double max = 0.0;
-		for (Employee e : employees)  {
-			if (e.sex() == Employee.Sex.FEMALE && e.age() >= 40 && isManagerNameFamous(e.managerName())) {
-				double salary = e.getSalary();
-				if(salary > max)
-					max = salary;
-			}
-		}
-		return max;
+		return c.getEmployees().stream()
+						.filter(e -> e.age() >= 40)
+						.filter(e -> e.sex() == Sex.FEMALE)
+						.filter(e -> isManagerNameFamous(e.managerName()))
+						.map(e -> e.getSalary())
+						.mapToDouble(Double::doubleValue)
+						.max().getAsDouble();
 	}
 	
 	public static void main(String [] args) {
 		Test t = new Test();
-		System.out.println("Average bonus is = " + t.averageBonus());
+		System.out.println("Average bonus is      = " + t.averageBonus());
 		System.out.println("Highest paid female = " + t.runQuery());
 	}
 }
