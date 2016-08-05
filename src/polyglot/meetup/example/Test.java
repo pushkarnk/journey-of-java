@@ -36,10 +36,10 @@ public class Test {
 	}
 	/* Find the maximum salary of a female employee who is in her 40s and reports to Larry, Satya or Steve */
 	public double runQuery() {
-		ArrayList employees = c.getEmployees();
+		ArrayList<Employee> employees = c.getEmployees();
 		double max = 0.0;
 		for (int i = 0; i<employees.size(); i++) {
-			Employee e = (Employee)(employees.get(i));
+			Employee e = employees.get(i);
 			if (e.sex() == Employee.FEMALE && e.age() >= 40 && isManagerNameFamous(e.managerName())) {
 				double salary = e.getSalary();
 				if(salary > max)

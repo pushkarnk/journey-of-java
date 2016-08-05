@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class Company {
 	
-	ArrayList employees = new ArrayList();
+	ArrayList<Employee> employees = new ArrayList<Employee>();
 	
 	public void addEmployee(Employee e) {
 		employees.add(e);
@@ -18,17 +18,17 @@ public class Company {
 	};
 	
 	/* Employee-bonus map*/
-	public HashMap getEmployeeBonuses() {
-		HashMap bonuses = new HashMap();
+	public HashMap<Employee,Double> getEmployeeBonuses() {
+		HashMap<Employee,Double> bonuses = new HashMap<Employee,Double>();
 		for (int i = 0; i < employees.size(); i++) {
-			Employee e = (Employee)(employees.get(i));
+			Employee e = employees.get(i);
 			double bonus = e.getBonus(bonusCalc);
 			bonuses.put(e, Double.valueOf(bonus));
 		}
 		return bonuses;
 	}
 	
-	public ArrayList getEmployees() {
+	public ArrayList<Employee> getEmployees() {
 		return employees;
 	}
 	
