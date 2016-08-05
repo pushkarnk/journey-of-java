@@ -1,18 +1,19 @@
 package polyglot.meetup.example;
 
 public class Employee {
-	
-	public static final int MALE = 0;
-	public static final int FEMALE = 1;
+
+	public enum Sex {
+		FEMALE,MALE
+	}
 	
 	private String name;
 	private int age;
 	private double monthlySalary;
-	private int sex;
+	private Sex sex;
 	private String managerName;
 	private int performanceRating;
 	
-	public Employee(String name, String managerName, int age, int sex, double salary, int performanceRating) {
+	public Employee(String name, String managerName, int age, Sex sex, double salary, int performanceRating) {
 		this.name = name;
 		this.managerName = managerName;
 		this.sex = sex;
@@ -33,7 +34,7 @@ public class Employee {
 		}
 	}
 	
-	public int sex() {
+	public Sex sex() {
 		return sex;
 	}
 	
