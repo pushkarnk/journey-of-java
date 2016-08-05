@@ -24,7 +24,7 @@ public class Test {
 		Object [] bonuses = c.getEmployeeBonuses().values().toArray();
 		double sum = 0;
 		for(int i = 0; i < bonuses.length; i++) {
-			sum += ((Double)(bonuses[i])).doubleValue();
+			sum += (Double)bonuses[i];
 		}
 		return sum/bonuses.length;
 	}

@@ -23,7 +23,7 @@ public class Company {
 		for (int i = 0; i < employees.size(); i++) {
 			Employee e = employees.get(i);
 			double bonus = e.getBonus(bonusCalc);
-			bonuses.put(e, Double.valueOf(bonus));
+			bonuses.put(e, bonus);
 		}
 		return bonuses;
 	}
