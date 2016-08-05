@@ -21,12 +21,11 @@ public class Test {
 	
 	
 	public double averageBonus() {
-		Object [] bonuses = c.getEmployeeBonuses().values().toArray();
 		double sum = 0;
-		for(int i = 0; i < bonuses.length; i++) {
-			sum += (Double)bonuses[i];
+		for(Double d :  c.getEmployeeBonuses().values()) {
+			sum += d;
 		}
-		return sum/bonuses.length;
+		return sum/c.getEmployees().size();
 	}
 	
 	private boolean isManagerNameFamous(String name) {
@@ -38,8 +37,7 @@ public class Test {
 	public double runQuery() {
 		ArrayList<Employee> employees = c.getEmployees();
 		double max = 0.0;
-		for (int i = 0; i<employees.size(); i++) {
-			Employee e = employees.get(i);
+		for (Employee e : employees)  {
 			if (e.sex() == Employee.Sex.FEMALE && e.age() >= 40 && isManagerNameFamous(e.managerName())) {
 				double salary = e.getSalary();
 				if(salary > max)

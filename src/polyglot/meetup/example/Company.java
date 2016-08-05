@@ -20,8 +20,7 @@ public class Company {
 	/* Employee-bonus map*/
 	public HashMap<Employee,Double> getEmployeeBonuses() {
 		HashMap<Employee,Double> bonuses = new HashMap<Employee,Double>();
-		for (int i = 0; i < employees.size(); i++) {
-			Employee e = employees.get(i);
+		for (Employee e :  employees ) {
 			double bonus = e.getBonus(bonusCalc);
 			bonuses.put(e, bonus);
 		}
