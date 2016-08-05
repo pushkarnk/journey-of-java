@@ -29,9 +29,14 @@ public class Test {
 	}
 	
 	private boolean isManagerNameFamous(String name) {
-		if(name.equals("Larry") || name.equals("Satya") || name.equals("Steve"))
-				return true;
-		return false;
+		switch(name) {
+		case "Larry":
+		case "Steve":
+		case "Satya" : 
+			return true;
+		default: 
+			return false;
+		}
 	}
 	/* Find the maximum salary of a female employee who is in her 40s and reports to Larry, Satya or Steve */
 	public double runQuery() {
