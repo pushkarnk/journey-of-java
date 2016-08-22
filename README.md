@@ -1,4 +1,4 @@
-# polyglot-meetup
+# The Journey of Java - A language brewer's perspective
 
 ### Details about commits
 
